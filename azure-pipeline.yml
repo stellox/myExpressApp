@@ -1,0 +1,41 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: Build
+  displayName: 'Build stage'
+  jobs:
+  - job: Build
+    displayName: 'Build job'
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '14.x'
+      displayName: 'Install Node.js'
+
+    - script: |
+        npm install
+      displayName: 'Install and Build'
+
+    - publish: '$(System.DefaultWorkingDirectory)/myExpressApp'
+      artifact: 'myExpressApp'
+      displayName: 'Publish Artifact'
+
+- stage: Deploy
+  displayName: 'Deploy stage'
+  dependsOn: Build
+  jobs:
+  - job: Deploy
+    displayName: 'Deploy job'
+    steps:
+    - task: AzureWebApp@1
+      inputs:
+        azureSubscription: 'b262904d-4540-4dc0-8342-06f643f3a0ea'
+        appName: 'testisg'
+        package: '$(Pipeline.Workspace)/myExpressApp'
+        runtimeStack: 'NODE|14-lts'
+        startUpCommand: 'npm start'
+      displayName: 'Deploy to Azure App Service'
