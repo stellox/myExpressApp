@@ -24,18 +24,18 @@ stages:
       artifact: 'myExpressApp'
       displayName: 'Publish Artifact'
 
-- stage: Deploy
-  displayName: 'Deploy stage'
-  dependsOn: Build
-  jobs:
-  - job: Deploy
-    displayName: 'Deploy job'
-    steps:
-    - task: AzureWebApp@1
-      inputs:
-        azureSubscription: 'b262904d-4540-4dc0-8342-06f643f3a0ea'
-        appName: 'testisg'
-        package: '$(Pipeline.Workspace)/myExpressApp'
-        runtimeStack: 'NODE|14-lts'
-        startUpCommand: 'npm start'
-      displayName: 'Deploy to Azure App Service'
+# - stage: Deploy
+#   displayName: 'Deploy stage'
+#   dependsOn: Build
+#   jobs:
+#   - job: Deploy
+#     displayName: 'Deploy job'
+#     steps:
+#     - task: AzureWebApp@1
+#       inputs:
+#         azureSubscription: 'b262904d-4540-4dc0-8342-06f643f3a0ea'
+#         appName: 'testisg'
+#         package: '$(Pipeline.Workspace)/myExpressApp'
+#         runtimeStack: 'NODE|14-lts'
+#         startUpCommand: 'npm start'
+#       displayName: 'Deploy to Azure App Service'
