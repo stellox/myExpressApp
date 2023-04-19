@@ -18,11 +18,13 @@ stages:
 
     - script: |
         npm install
+        zip -r myExpressApp.zip .
       displayName: 'Install and Build'
 
-    - publish: '$(System.DefaultWorkingDirectory)/myExpressApp'
+    - publish: '$(System.DefaultWorkingDirectory)/myExpressApp.zip'
       artifact: 'myExpressApp'
       displayName: 'Publish Artifact'
+
 
 # - stage: Deploy
 #   displayName: 'Deploy stage'
