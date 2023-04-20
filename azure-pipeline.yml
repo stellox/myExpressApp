@@ -41,7 +41,7 @@ stages:
          downloadPath: '$(System.DefaultWorkingDirectory)'    
     - task: AzureWebApp@1
       inputs:
-        azureSubscription: 'Devops101'
+        azureSubscription: 'Azure subscription 1 (b262904d-4540-4dc0-8342-06f643f3a0ea)'
         appName: 'boomshak'
         package: '$(System.DefaultWorkingDirectory)/**/*.zip'
         runtimeStack: 'NODE|14-lts'
