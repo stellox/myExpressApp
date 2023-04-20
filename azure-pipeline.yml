@@ -36,7 +36,7 @@ stages:
     - task: AzureWebApp@1
       inputs:
         azureSubscription: 'Devops101'
-        appName: 'testisg'
+        appName: 'boomshak'
         package: '$(Pipeline.Workspace)/myExpressApp'
         runtimeStack: 'NODE|14-lts'
         startUpCommand: 'npm start'
