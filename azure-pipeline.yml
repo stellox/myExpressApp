@@ -33,6 +33,12 @@ stages:
   - job: Deploy
     displayName: 'Deploy job'
     steps:
+    - task: DownloadBuildArtifacts@1
+      inputs:
+         buildType: 'current'
+         downloadType: 'single'
+         artifactName: 'myExpressApp'
+         downloadPath: '$(System.DefaultWorkingDirectory)'    
     - task: AzureWebApp@1
       inputs:
         azureSubscription: 'Devops101'
