@@ -37,7 +37,7 @@ stages:
       inputs:
         azureSubscription: 'Devops101'
         appName: 'boomshak'
-        package: '$(Pipeline.Workspace)/myExpressApp/*.zip'
+        package: '$(System.DefaultWorkingDirectory)/myExpressApp.zip'
         runtimeStack: 'NODE|14-lts'
         startUpCommand: 'npm start'
       displayName: 'Deploy to Azure App Service'
