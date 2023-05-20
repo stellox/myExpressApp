@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  vmImage: $VIRTUALMACHINE
+  vmImage: 'windows-2019'
 
 stages:
 - stage: Build
