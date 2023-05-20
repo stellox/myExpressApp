@@ -26,24 +26,24 @@ stages:
       displayName: 'Publish Artifact'
 
 
-- stage: Deploy
-  displayName: 'Deploy stage'
-  dependsOn: Build 
-  jobs:
-  - job: Deploy
-    displayName: 'Deploy job'
-    steps:
-    - task: DownloadBuildArtifacts@1
-      inputs:
-         buildType: 'current'
-         downloadType: 'single'
-         artifactName: 'myExpressApp'
-         downloadPath: '$(System.DefaultWorkingDirectory)'    
-    - task: AzureWebApp@1
-      inputs:
-        azureSubscription: 'Azure subscription 1 (b262904d-4540-4dc0-8342-06f643f3a0ea)'
-        appName: 'boomshak'
-        package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-        runtimeStack: 'NODE|14-lts'
-        startUpCommand: 'npm start'
-      displayName: 'Deploy to Azure App Service'
+# - stage: Deploy
+#   displayName: 'Deploy stage'
+#   dependsOn: Build 
+#   jobs:
+#   - job: Deploy
+#     displayName: 'Deploy job'
+#     steps:
+#     - task: DownloadBuildArtifacts@1
+#       inputs:
+#          buildType: 'current'
+#          downloadType: 'single'
+#          artifactName: 'myExpressApp'
+#          downloadPath: '$(System.DefaultWorkingDirectory)'    
+#     - task: AzureWebApp@1
+#       inputs:
+#         azureSubscription: 'Azure subscription 1 (b262904d-4540-4dc0-8342-06f643f3a0ea)'
+#         appName: 'boomshak'
+#         package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+#         runtimeStack: 'NODE|14-lts'
+#         startUpCommand: 'npm start'
+#       displayName: 'Deploy to Azure App Service'
