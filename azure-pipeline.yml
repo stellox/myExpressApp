@@ -21,7 +21,7 @@ stages:
         zip -r myExpressApp.zip .
       displayName: 'Install and Build'
 
-    - publish: '$(System.DefaultWorkingDirectory)/myExpressApp.zip'
+    - publish: '$(System.DefaultWorkingDirectory)'
       artifact: 'myExpressApp'
       displayName: 'Publish Artifact'
 
